@@ -1,6 +1,10 @@
-def ascii_art():
+import os
+import time
+
+def ascii_art(tail_char, eye_char):
     art_height = 31
     art_width = 150
+    
 
     for row in range(art_height):
         line = ""
@@ -330,7 +334,7 @@ def ascii_art():
                 elif col == 24:
                     line += "("
                 elif col == 25 or col ==27 :
-                    line += "-"
+                    line += eye_char
                 elif col == 26 or col == 86:
                     line += "."
                 elif col == 28:
@@ -482,7 +486,7 @@ def ascii_art():
                 elif col == 145:
                     line += "/"
                 elif col == 146:
-                    line += ")"
+                    line += "("
                 else:
                     line += " "
 
@@ -546,7 +550,7 @@ def ascii_art():
                 elif col == 104 or col == 105 or col == 107 or col == 109 or col == 110:
                     line += " "
                 elif col == 106 or col == 108:
-                    line += "o"
+                    line += eye_char
                 else:
                     line += " "
                     
@@ -676,7 +680,7 @@ def ascii_art():
                 elif col == 110:
                     line += "\\"
                 elif col == 118:
-                    line += ")"
+                    line += tail_char
                 else:
                     line += " "
 
@@ -716,4 +720,14 @@ def ascii_art():
                    
         print(line)
 
-ascii_art()
+#ascii_art()
+
+
+# Animation loop
+tail_chars = [")", "("]
+eye_chars = ["o", "-"]
+while True:
+    for tail_char, eye_char in zip(tail_chars, eye_chars):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        ascii_art(tail_char, eye_char)
+        time.sleep(0.5)
